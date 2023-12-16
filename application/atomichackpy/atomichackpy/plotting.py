@@ -60,3 +60,4 @@ def plot_frame(frame: np.ndarray,
               fontsize=fontsize)
     plt.tight_layout()
     plt.show()
+    return fig
