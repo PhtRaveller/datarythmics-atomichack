@@ -31,7 +31,8 @@ def plot_frame(frame: np.ndarray,
                  markersize=12)
         defect_outline = Rectangle((defect.x - PATCH_S, defect.y - PATCH_S),
                                    2 * PATCH_S, 2 * PATCH_S,
-                                   linewidth=1,
+                                   linewidth=0.5,
+                                   linestyle=("-" if defect.source=="train" else "--"),
                                    edgecolor=f"#{defect.colorcode.lower()}",
                                    facecolor='none')
         plt.gca().add_patch(defect_outline)
@@ -40,11 +41,12 @@ def plot_frame(frame: np.ndarray,
                  verticalalignment="top",
                  horizontalalignment="left",
                  fontsize=5,
-                 color="white",
+                 color="white" if defect.colorcode!="FFFFFFFF" else "black",
                  bbox={
                      "pad": 0,
                      "facecolor": f"#{defect.colorcode.lower()}",
-                     "edgecolor": f"#{defect.colorcode.lower()}"
+                     "edgecolor": f"#{defect.colorcode.lower()}",
+                     
                  })
 
     # Clean-up
